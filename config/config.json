@@ -1,0 +1,4 @@
+{
+    "class_indices": {"holmy": 0, "jacklyn": 1, "rosia": 2, "tsukino": 3},
+    "model_weight_path": "model/crcr_clf_model_weights.hdf5"
+}
