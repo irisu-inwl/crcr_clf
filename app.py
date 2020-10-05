@@ -1,5 +1,6 @@
 from PIL import Image
 import json
+import os
 
 import streamlit as st
 import pandas as pd
@@ -14,10 +15,14 @@ from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow.keras import backend as K
 from tensorflow.keras.optimizers import SGD
 
-import keras.backend.tensorflow_backend as tb
-
-tb._SYMBOLIC_SCOPE.value = True
 st.set_option('deprecation.showfileUploaderEncoding', False)
+
+IS_WINDOWS = (os.name == 'nt')
+if IS_WINDOWS:
+    import keras.backend.tensorflow_backend as tb
+
+    tb._SYMBOLIC_SCOPE.value = True
+    
 
 @st.cache(allow_output_mutation=True)
 def load_config(config_path: str):
@@ -96,6 +101,5 @@ if uploaded_file is not None:
     df = pd.DataFrame(result.T, index=['holmy', 'jacklyn', 'rosia', 'tsukino'], columns=['predict_proba'])
     st.write(df)
     st.bar_chart(df)
-    # 
 
 
