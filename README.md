@@ -27,4 +27,16 @@ pip install streamlit
 streamlit run app.py
 ```
 
+### Deployment Using Docker
 
+- building docker image
+
+```
+$ docker build -t crcrclf:latest .
+```
+
+- create container
+
+```
+$ docker run -id -p 8501:8501 --name crcrclf-test crcrclf:latest
+```
